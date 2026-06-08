@@ -1,0 +1,20 @@
+def hash_func(password):
+    return sum(ord(c) for c in password) % 10000
+
+def crack_password(hash_value, length=4):
+    from itertools import product
+    digits = '0123456789'
+    for combo in product(digits, repeat=length):
+        pwd = ''.join(combo)
+        if hash_func(pwd) == hash_value:
+            return pwd
+    return None
+
+
+original_password = "1234"
+hashed = hash_func(original_password)
+found = crack_password(hashed)
+
+print(f"Хеш: {hashed}")
+print(f"Найденный пароль: {found}")
+print(f"Сложность перебора: O(10^{len(original_password)})")
