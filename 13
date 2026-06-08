@@ -1,0 +1,72 @@
+def max_niz(m):
+                           mx = m[i][j]
+    return mx
+
+
+def summa(m, mx):
+    n = len(m)
+    s = 0
+    f = False
+    for i in range(n):
+        for j in range(i, n):
+            if mx is None or m[i][j] > mx:
+                s = s + m[i][j]
+                f = True
+    return s, f
+
+n = int(input("Введите размер матрицы n: "))
+
+matr = vvod(n)
+
+print("Исходная матрица:")
+vivod(matr)
+
+
+def vvod(n):
+ m = []
+print("Введите элементы матрицы построчно:")
+for i in range(n):
+      a = list(map(float, input().split()))
+      m.append(a)
+return m
+
+def vivod(m):
+for i in range(len(m)):
+      for j in range(len(m[i])):
+            print(m[i][j], end=" ")
+      print()
+
+def max_niz(m):
+    n = len(m)
+    mx = None
+    for i in range(n):
+
+    for j in range(n):
+        if i > j:
+             if mx is None or m[i][j] > mx:
+                 mx = m[i][j]
+    return mx
+def summa(m, mx):
+    n = len(m)
+    s = 0
+    f = False for i in range(n):
+    for j in range(i, n):
+        if mx is None or m[i][j] > mx:
+            s = s + m[i][j]
+            f = True
+    return s, f
+n = int(input("Введите размер матрицы n: "))
+
+matr = vvod(n)
+
+print("Исходная матрица:")
+vivod(matr)
+
+maxx = max_niz(matr)
+
+res, flag = summa(matr, maxx)
+
+ if flag:
+    print("Сумма:", res)
+ else:
+    print("Нет таких элементов")
