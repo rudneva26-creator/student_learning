@@ -1,0 +1,33 @@
+import random
+
+def generate_keys(p):
+    key = random.randint(2, p-1)
+    return key
+
+def encrypt(number, key, p):
+    return (number * key) % p
+
+def decrypt(cipher, key, p):
+    inv_key = pow(key, -1, p)
+    return (cipher * inv_key) % p
+
+def add_encrypted(e1, e2, p):
+    return (e1 + e2) % p
+
+def mul_encrypted(e1, e2, p):
+    return (e1 * e2) % p
+
+
+p = 1000003  
+key = generate_keys(p)
+
+a, b = 42, 7
+enc_a = encrypt(a, key, p)
+enc_b = encrypt(b, key, p)
+
+enc_product = mul_encrypted(enc_a, enc_b, p)
+decrypted_product = decrypt(enc_product, key, p)
+
+print(f"Произведение {a} * {b} = {a*b}")
+print(f"Расшифрованное произведение: {decrypted_product}")
+print(f"Совпадает: {a*b == decrypted_product}")
