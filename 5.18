@@ -1,0 +1,22 @@
+import exifread
+
+def analyze_metadata(image_path):
+    with open(image_path, 'rb') as f:
+        tags = exifread.process_file(f)
+    
+    gps = {}
+    for tag, value in tags.items():
+        if 'GPS' in tag:
+            gps[tag] = str(value)
+    
+    date_time = tags.get('EXIF DateTimeOriginal', 'Не указано')
+    model = tags.get('Image Model', 'Не указано')
+    
+    print(f"Модель устройства: {model}")
+    print(f"Дата съёмки: {date_time}")
+    print(f"GPS данные: {gps if gps else 'Отсутствуют'}")
+    
+    if gps:
+        print("Внимание: фото содержит GPS-координаты — риск приватности!")
+
+analyze_metadata("photo.jpg")
