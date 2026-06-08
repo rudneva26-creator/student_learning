@@ -1,0 +1,65 @@
+   return s, f1
+
+n = int(input("Размер n: "))
+
+matr = vvod(n)
+
+print("Матрица:")
+vivod(matr)
+
+maxx = max_niz(matr)
+
+res, f = summa(matr, maxx)
+
+if f:
+    print("Сумма:", res)
+else:
+    print("нет таких элементов")
+
+def vvod(n):
+    m = []
+    print("Вводи матрицу:")
+    for i in range(n):
+        a = list(map(float, input().split()))
+        m.append(a)
+    return m
+def vivod(m):
+    for i in range(len(m)):
+        for j in range(len(m[i])):
+            print(m[i][j], end=" ")
+        print()
+def max_niz(m):
+    n = len(m)
+    mx = None
+    for i in range(n):
+        for j in range(n):
+            if i > j:
+                if mx is None or m[i][j] > mx:
+                    mx = m[i][j]
+    return mx
+def summa(m, mx):
+    n = len(m)
+    s = 0
+    fl = False
+    for i in range(n):
+        for j in range(i, n):
+            if mx is None or m[i][j] > mx:
+                s += m[i][j]
+                fl = True
+    return s, fl
+
+n = int(input("Размер n: "))
+
+matr = vvod(n)
+
+print("Матрица:")
+vivod(matr)
+
+maxx = max_niz(matr)
+
+res, f = summa(matr, maxx)
+
+if f:
+    print("Сумма:", res)
+else:
+    print("Нет таких элементов")
